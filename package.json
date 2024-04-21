@@ -1,0 +1,18 @@
+{
+  "name": "@hexlet/code",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/Akirushk/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Akirushk/frontend-project-44/actions)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "brain-games.js": "bin/brain-games.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "make": "^0.8.1"
+  }
+}
