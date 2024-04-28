@@ -1,7 +1,7 @@
 ---
 root: true
 
-extends: standard
+extends: recommendedy
 
 rules:
   no-console: 0
