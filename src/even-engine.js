@@ -1,9 +1,12 @@
 import readlineSync from 'readline-sync';
-import userName from '../src/cli.js';
-import getRandomNum from '../src/random-num.js';
-import evenNumDeterminant from '../src/even-or-odd.js';
+import { greeting, userName } from '../src/cli.js';
+import getRandomNum from './get-random-num.js';
+import checkEvenNum from './check-even-num.js';
 
 const userAnswerHandler = () => {
+    greeting();
+    console.log('Answer "yes" if the number is even, otherwise answer "no".');
+
     let randomNum = getRandomNum(0, 100);
     let correctAnswerCount = 0;
 
@@ -12,9 +15,9 @@ const userAnswerHandler = () => {
         console.log(`Question: ${randomNum}`);
         const userAnswer = readlineSync.question('Your answer: ');
 
-        if (userAnswer !== evenNumDeterminant(randomNum)) {
-            return `'${userAnswer}' is wrong answer ;(. Correct answer was '${evenNumDeterminant(randomNum)}'.
-            Let's try again, ${userName}!`;
+        if (userAnswer !== checkEvenNum(randomNum)) {
+            console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${checkEvenNum(randomNum)}'.\nLet's try again, ${userName}!`);
+            return;
         }
 
         console.log('Correct!');
@@ -23,7 +26,7 @@ const userAnswerHandler = () => {
       
     } while (correctAnswerCount < 3);
        
-  return `Congratulations, ${userName}!`;
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default userAnswerHandler;
