@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import userAnswerHandler from '../src/even-engine.js';
+import evenEngine from '../src/even-engine.js';
 
-userAnswerHandler();
+evenEngine();

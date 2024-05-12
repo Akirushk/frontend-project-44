@@ -1,32 +1,18 @@
-import readlineSync from 'readline-sync';
-import { greeting, userName } from '../src/cli.js';
 import getRandomNum from './get-random-num.js';
-import checkEvenNum from './check-even-num.js';
+import play from './index.js';
 
-const userAnswerHandler = () => {
-    greeting();
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
+const checkEvenNum = (num) => (num % 2 === 0 ? 'yes' : 'no');
+const updateQuestion = () => {
+    return getRandomNum(0, 100);
+  };
 
-    let randomNum = getRandomNum(0, 100);
-    let correctAnswerCount = 0;
+const evenEngine = () => {
 
-    do {
-        randomNum = getRandomNum(0, 100);
-        console.log(`Question: ${randomNum}`);
-        const userAnswer = readlineSync.question('Your answer: ');
+    const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+    const question = updateQuestion();
+    const verification = checkEvenNum(question); 
 
-        if (userAnswer !== checkEvenNum(randomNum)) {
-            console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${checkEvenNum(randomNum)}'.\nLet's try again, ${userName}!`);
-            return;
-        }
+    play(rules, question, verification);
+}
 
-        console.log('Correct!');
-      
-        correctAnswerCount += 1;
-      
-    } while (correctAnswerCount < 3);
-       
-  console.log(`Congratulations, ${userName}!`);
-};
-
-export default userAnswerHandler;
+export default evenEngine;
