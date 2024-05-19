@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import evenEngine from '../src/even-engine.js';
+import evenEngine from '../src/games/even-engine.js';
 
 evenEngine();
