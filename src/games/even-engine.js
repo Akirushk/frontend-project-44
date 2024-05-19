@@ -1,5 +1,5 @@
-import play from '../main_logic/index.js';
 import getRandomNum from '../get-random-num.js';
+import play from '../main_logic/index.js';
 
 const evenEngine = () => {
 
