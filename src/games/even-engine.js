@@ -1,15 +1,21 @@
 import getRandomNum from '../get-random-num.js';
-import play from '../main_logic/index.js';
+import run from '../main_logic/index.js';
 
-const evenEngine = () => {
+const getEvenNum = (num) => num % 2 === 0;
 
-    const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-    const question = (max, min) => {
-      return getRandomNum(max, min);
+const play = () => {
+    const description = `Answer "yes" if the number is even, otherwise answer "no".`;
+    
+    const getQuestion = () => {
+      const min = 0;
+      const max = 100;
+
+      return getRandomNum(min, max);
   };
-    const verification = (num) => (num % 2 === 0 ? 'yes' : 'no');
+  
+    const doVerification = (question) => (getEvenNum(question) ? `yes` : `no`);
 
-    play(rules, question, verification);
+    run(description, getQuestion, doVerification);
 }
 
-export default evenEngine;
+export default play;

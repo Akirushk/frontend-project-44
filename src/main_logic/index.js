@@ -1,27 +1,29 @@
 import readlineSync from 'readline-sync';
 
-const play = (rules, question, verification) => {
-    console.log('Welcome to the Brain Games!');
+const run = (description, getQuestion, doVerification) => {
+    console.log(`Welcome to the Brain Games!`);
 
-    let userName = readlineSync.question('May I have your name? ');
-    console.log('Hello, ' + userName + '!');
+    const userName = readlineSync.question(`May I have your name? `);
 
-    console.log(rules);
+    console.log(`Hello, ${userName}!`);
+
+    console.log(description);
 
     let correctAnswerCount = 0;
 
     do {
-        let equation = question(0, 100);
-        console.log(`Question: ${equation}`);
+        const question = getQuestion();
+        console.log(`Question: ${question}`);
 
-        const userAnswer = readlineSync.question('Your answer: ');
+        const userAnswer = readlineSync.question(`Your answer: `);
 
-        if (userAnswer !== verification(equation)) {
-            console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${verification(equation)}'.\nLet's try again, ${userName}!`);
+        const correctAnswer = doVerification(question);
+        if (userAnswer !== correctAnswer) {
+            console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`);
             return;
         }
 
-        console.log('Correct!');
+        console.log(`Correct!`);
       
         correctAnswerCount += 1;
       
@@ -30,4 +32,4 @@ const play = (rules, question, verification) => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export default play;
+export default run;

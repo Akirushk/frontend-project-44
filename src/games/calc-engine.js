@@ -1,26 +1,30 @@
 import getRandomNum from '../get-random-num.js';
-import play from '../main_logic/index.js';
+import run from '../main_logic/index.js';
 
-const calcEngine = () => {
-  
-  const getRandomOperator = () => {
-  const arr = ['+', '-', '*'];
-  let random = Math.floor(Math.random() * arr.length); 
-  return arr[random];
-  }; 
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  const random = Math.floor(Math.random() * operators.length); 
 
-  const rules = 'What is the result of the expression?';
+  return operators[random];
+}; 
+
+const play = () => {
+  const description = `What is the result of the expression?`;
   
-  const question = (max, min) => {
-     return `${getRandomNum(max, min)} ${getRandomOperator()} ${getRandomNum(max, min)}`
+  const getQuestion = () => {
+    const min = 0;
+    const max = 100;
+
+    return `${getRandomNum(min, max)} ${getRandomOperator()} ${getRandomNum(min, max)}`
   };
   
-  const verification = (smth) => {
-    let result = eval(smth);
+  const doVerification = (question) => {
+    const result = eval(question);
+
     return String(result);
   };
 
-  play(rules, question, verification);
+  run(description, getQuestion, doVerification);
 };
 
-export default calcEngine;
+export default play;

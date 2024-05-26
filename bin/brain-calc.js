@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import calcEngine from '../src/games/calc-engine.js';
+import play from '../src/games/calc-engine.js';
 
-calcEngine();
+play();
 

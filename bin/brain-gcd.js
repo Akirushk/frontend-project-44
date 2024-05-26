@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import gcdEngine from '../src/games/gcd-engine.js';
+import play from '../src/games/gcd-engine.js';
 
-gcdEngine();
+play();
