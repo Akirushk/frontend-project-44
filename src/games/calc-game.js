@@ -19,7 +19,8 @@ const play = () => {
   };
 
   const doVerification = (question) => {
-    const result = this.eval(question);
+    const toNum = eval;
+    const result = toNum(question);
 
     return String(result);
   };
