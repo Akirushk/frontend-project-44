@@ -11,28 +11,28 @@ const makeStringToArr = (text) => {
   return result;
 };
 
+const getQuestion = () => {
+  const min = 0;
+  const max = 100;
+
+  return `${getRandomNum(min, max)} ${getRandomNum(min, max)}`;
+};
+
+const doVerification = (question) => {
+  const arr = makeStringToArr(question);
+  let [num1, num2] = arr;
+  let remainder;
+
+  while (remainder !== 0) {
+    remainder = num1 % num2;
+    num1 = num2;
+    num2 = remainder;
+  }
+  return String(num1);
+};
+
 const play = () => {
   const description = 'Find the greatest common divisor of given numbers.';
-
-  const getQuestion = () => {
-    const min = 0;
-    const max = 100;
-
-    return `${getRandomNum(min, max)} ${getRandomNum(min, max)}`;
-  };
-
-  const doVerification = (question) => {
-    const arr = makeStringToArr(question);
-    let [Num1, Num2] = arr;
-    let remainder;
-
-    while (remainder !== 0) {
-      remainder = Num1 % Num2;
-      Num1 = Num2;
-      Num2 = remainder;
-    }
-    return String(Num1);
-  };
 
   run(description, getQuestion, doVerification);
 };

@@ -13,17 +13,17 @@ const getPrimeNum = (number) => {
   return true;
 };
 
+const getQuestion = () => {
+  const min = 0;
+  const max = 100;
+
+  return getRandomNum(min, max);
+};
+
+const doVerification = (question) => (getPrimeNum(question) ? 'yes' : 'no');
+
 const play = () => {
   const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-  const getQuestion = () => {
-    const min = 0;
-    const max = 100;
-
-    return getRandomNum(min, max);
-  };
-
-  const doVerification = (question) => (getPrimeNum(question) ? 'yes' : 'no');
 
   run(description, getQuestion, doVerification);
 };

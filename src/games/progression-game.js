@@ -16,23 +16,23 @@ const makeProgression = () => {
 
 let answer;
 
+const getQuestion = () => {
+  const arr = makeProgression();
+  const random = Math.floor(Math.random() * arr.length);
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (i === random) {
+      answer = arr[i];
+      arr[i] = '..';
+    }
+  }
+  return arr.join(' ');
+};
+
+const doVerification = () => String(answer);
+
 const play = () => {
   const description = 'What number is missing in the progression?';
-
-  const getQuestion = () => {
-    const arr = makeProgression();
-    const random = Math.floor(Math.random() * arr.length);
-
-    for (let i = 0; i < arr.length; i += 1) {
-      if (i === random) {
-        answer = arr[i];
-        arr[i] = '..';
-      }
-    }
-    return arr.join(' ');
-  };
-
-  const doVerification = () => String(answer);
 
   run(description, getQuestion, doVerification);
 };
