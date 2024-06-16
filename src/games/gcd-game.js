@@ -3,7 +3,7 @@ import run from '../index.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const makeStringToArr = (text) => {
+const parseQuestion = (text) => {
   const arr = text.split(' ');
   const result = [];
 
@@ -22,7 +22,7 @@ const getQuestion = () => {
 };
 
 const doVerification = (question) => {
-  const arr = makeStringToArr(question);
+  const arr = parseQuestion(question);
   let [num1, num2] = arr;
   let remainder;
 

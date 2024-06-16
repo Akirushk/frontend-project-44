@@ -3,7 +3,7 @@ import run from '../index.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const getPrimeNum = (number) => {
+const isPrime = (number) => {
   if (number < 2) {
     return false;
   }
@@ -23,7 +23,7 @@ const getQuestion = () => {
   return getRandomNum(min, max);
 };
 
-const doVerification = (question) => (getPrimeNum(question) ? 'yes' : 'no');
+const doVerification = (question) => (isPrime(question) ? 'yes' : 'no');
 
 const play = () => {
   run(description, getQuestion, doVerification);

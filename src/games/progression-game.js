@@ -3,7 +3,7 @@ import run from '../index.js';
 
 const description = 'What number is missing in the progression?';
 
-const makeProgression = () => {
+const createProgression = () => {
   const arr = [];
   const num = getRandomNum(1, 5);
   const arrLength = getRandomNum(5, 10);
@@ -20,7 +20,7 @@ const makeProgression = () => {
 let answer;
 
 const getQuestion = () => {
-  const arr = makeProgression();
+  const arr = createProgression();
   const random = Math.floor(Math.random() * arr.length);
 
   for (let i = 0; i < arr.length; i += 1) {
