@@ -12,6 +12,7 @@ const getPrimeNum = (number) => {
       return false;
     }
   }
+
   return true;
 };
 

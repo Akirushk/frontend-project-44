@@ -34,8 +34,10 @@ const doVerification = (question) => {
     case '*':
       result = Number(num1) * Number(num2);
       break;
-    // no default
+    default:
+      throw new Error(`Unknown operator: ${operator}`);
   }
+
   return String(result);
 };
 

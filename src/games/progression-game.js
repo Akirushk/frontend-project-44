@@ -13,6 +13,7 @@ const makeProgression = () => {
     result += j;
     arr.push(result);
   }
+
   return arr;
 };
 
@@ -28,6 +29,7 @@ const getQuestion = () => {
       arr[i] = '..';
     }
   }
+
   return arr.join(' ');
 };
 

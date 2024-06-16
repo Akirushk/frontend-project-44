@@ -10,6 +10,7 @@ const makeStringToArr = (text) => {
   for (let i = 0; i < arr.length; i += 1) {
     result.push(Number(arr[i]));
   }
+
   return result;
 };
 
@@ -30,6 +31,7 @@ const doVerification = (question) => {
     num1 = num2;
     num2 = remainder;
   }
+
   return String(num1);
 };
 
