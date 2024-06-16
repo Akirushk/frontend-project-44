@@ -1,6 +1,8 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
 const getPrimeNum = (number) => {
   if (number < 2) {
     return false;
@@ -23,8 +25,6 @@ const getQuestion = () => {
 const doVerification = (question) => (getPrimeNum(question) ? 'yes' : 'no');
 
 const play = () => {
-  const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
   run(description, getQuestion, doVerification);
 };
 

@@ -1,6 +1,8 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
+const description = 'What number is missing in the progression?';
+
 const makeProgression = () => {
   const arr = [];
   const num = getRandomNum(1, 5);
@@ -32,8 +34,6 @@ const getQuestion = () => {
 const doVerification = () => String(answer);
 
 const play = () => {
-  const description = 'What number is missing in the progression?';
-
   run(description, getQuestion, doVerification);
 };
 

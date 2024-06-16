@@ -1,6 +1,8 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
+const description = 'Find the greatest common divisor of given numbers.';
+
 const makeStringToArr = (text) => {
   const arr = text.split(' ');
   const result = [];
@@ -32,8 +34,6 @@ const doVerification = (question) => {
 };
 
 const play = () => {
-  const description = 'Find the greatest common divisor of given numbers.';
-
   run(description, getQuestion, doVerification);
 };
 

@@ -1,6 +1,8 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
+const description = 'What is the result of the expression?';
+
 const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
   const random = Math.floor(Math.random() * operators.length);
@@ -38,8 +40,6 @@ const doVerification = (question) => {
 };
 
 const play = () => {
-  const description = 'What is the result of the expression?';
-
   run(description, getQuestion, doVerification);
 };
 
