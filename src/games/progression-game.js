@@ -21,7 +21,7 @@ let answer;
 
 const getQuestion = () => {
   const arr = createProgression();
-  const random = Math.floor(Math.random() * arr.length);
+  const random = getRandomNum(0, arr.length);
 
   for (let i = 0; i < arr.length; i += 1) {
     if (i === random) {
