@@ -1,27 +1,14 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
-const description = 'What is the result of the expression?';
+const parseQuestion = (text) => {
+  const arr = text.split(' ');
 
-const getRandomOperator = () => {
-  const operators = ['+', '-', '*'];
-  const random = Math.floor(Math.random() * operators.length);
-
-  return operators[random];
+  return arr;
 };
 
-const getQuestion = () => {
-  const min = 0;
-  const max = 100;
-
-  return `${getRandomNum(min, max)} ${getRandomOperator()} ${getRandomNum(min, max)}`;
-};
-
-const doVerification = (question) => {
-  const arr = question.split(' ');
-  const operator = arr[1];
-  const num1 = arr[0];
-  const num2 = arr[2];
+const count = (arr) => {
+  const [num1, operator, num2] = arr;
   let result;
 
   switch (operator) {
@@ -37,6 +24,29 @@ const doVerification = (question) => {
     default:
       throw new Error(`Unknown operator: ${operator}`);
   }
+
+  return result;
+};
+
+const description = 'What is the result of the expression?';
+
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  const random = getRandomNum(0, operators.length);
+
+  return operators[random];
+};
+
+const getQuestion = () => {
+  const min = 0;
+  const max = 100;
+
+  return `${getRandomNum(min, max)} ${getRandomOperator()} ${getRandomNum(min, max)}`;
+};
+
+const doVerification = (question) => {
+  const arr = parseQuestion(question);
+  const result = count(arr);
 
   return String(result);
 };
