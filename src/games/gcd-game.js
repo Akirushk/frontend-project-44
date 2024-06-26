@@ -33,7 +33,7 @@ const getQuestion = () => {
   return `${getRandomNum(min, max)} ${getRandomNum(min, max)}`;
 };
 
-const doVerification = (question) => {
+const verify = (question) => {
   const arr = parseQuestion(question);
   const result = count(arr);
 
@@ -41,7 +41,7 @@ const doVerification = (question) => {
 };
 
 const play = () => {
-  run(description, getQuestion, doVerification);
+  run(description, getQuestion, verify);
 };
 
 export default play;

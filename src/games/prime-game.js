@@ -23,10 +23,10 @@ const getQuestion = () => {
   return getRandomNum(min, max);
 };
 
-const doVerification = (question) => (isPrime(question) ? 'yes' : 'no');
+const verify = (question) => (isPrime(question) ? 'yes' : 'no');
 
 const play = () => {
-  run(description, getQuestion, doVerification);
+  run(description, getQuestion, verify);
 };
 
 export default play;
