@@ -19,10 +19,10 @@ const createProgression = () => {
 
 const getQuestion = () => {
   const arr = createProgression();
-  const random = getRandomNum(0, arr.length);
+  const hiddenIndex = getRandomNum(0, arr.length);
 
   for (let i = 0; i < arr.length; i += 1) {
-    if (i === random) {
+    if (i === hiddenIndex) {
       arr[i] = '..';
     }
   }
@@ -30,7 +30,7 @@ const getQuestion = () => {
   return arr.join(' ');
 };
 
-const doVerification = (question) => {
+const verify = (question) => {
   const progression = question.split(' ');
   let step;
   let result;
@@ -54,7 +54,7 @@ const doVerification = (question) => {
 };
 
 const play = () => {
-  run(description, getQuestion, doVerification);
+  run(description, getQuestion, verify);
 };
 
 export default play;
