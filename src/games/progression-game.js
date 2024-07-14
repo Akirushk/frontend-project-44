@@ -17,36 +17,37 @@ const createProgression = () => {
   return arr;
 };
 
+const getStep = (arr) => {
+  let step;
+  let i = 0;
+
+  do {
+    step = Number(arr[i + 1]) - Number(arr[i]);
+    i += 1;
+  } while (Number.isNaN(step));
+
+  return step;
+};
+
 const getQuestion = () => {
   const arr = createProgression();
   const hiddenIndex = getRandomNum(0, arr.length);
 
-  for (let i = 0; i < arr.length; i += 1) {
-    if (i === hiddenIndex) {
-      arr[i] = '..';
-    }
-  }
+  arr[hiddenIndex] = '..';
 
   return arr.join(' ');
 };
 
-const verify = (question) => {
+const getAnswer = (question) => {
   const progression = question.split(' ');
-  let step;
   let result;
-  let i = 0;
-
-  do {
-    step = Number(progression[i + 1]) - Number(progression[i]);
-    i += 1;
-  } while (Number.isNaN(step));
 
   for (let j = 0; j < progression.length; j += 1) {
     if (progression[j] === '..') {
-      if (j === (progression.length - 1)) {
-        result = Number(progression[j - 1]) + step;
+      if (j === 0) {
+        result = Number(progression[j + 1]) - getStep(progression);
       } else {
-        result = Number(progression[j + 1]) - step;
+        result = Number(progression[j - 1]) + getStep(progression);
       }
     }
   }
@@ -54,7 +55,7 @@ const verify = (question) => {
 };
 
 const play = () => {
-  run(description, getQuestion, verify);
+  run(description, getQuestion, getAnswer);
 };
 
 export default play;
