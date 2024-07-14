@@ -1,58 +1,48 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
-const parseQuestion = (text) => {
-  const arr = text.split(' ');
+const description = 'What is the result of the expression?';
 
-  return arr;
-};
+const OPERATORS = ['+', '-', '*'];
 
-const count = (arr) => {
-  const [num1, operator, num2] = arr;
-  let result;
-
+const makeCalc = (num1, operator, num2) => {
   switch (operator) {
     case '+':
-      result = Number(num1) + Number(num2);
-      break;
+      return Number(num1) + Number(num2);
     case '-':
-      result = Number(num1) - Number(num2);
-      break;
+      return Number(num1) - Number(num2);
     case '*':
-      result = Number(num1) * Number(num2);
-      break;
+      return Number(num1) * Number(num2);
     default:
       throw new Error(`Unknown operator: ${operator}`);
   }
-
-  return result;
 };
 
-const description = 'What is the result of the expression?';
+const countExpression = (num1, operator, num2) => makeCalc(num1, operator, num2);
 
 const getRandomOperator = () => {
-  const operators = ['+', '-', '*'];
-  const random = getRandomNum(0, operators.length);
+  const random = getRandomNum(0, OPERATORS.length);
 
-  return operators[random];
+  return OPERATORS[random];
 };
 
 const getQuestion = () => {
-  const min = 0;
-  const max = 100;
+  const operand1 = getRandomNum(0, 100);
+  const operator = getRandomOperator();
+  const operand2 = getRandomNum(0, 100);
 
-  return `${getRandomNum(min, max)} ${getRandomOperator()} ${getRandomNum(min, max)}`;
+  return `${operand1} ${operator} ${operand2}`;
 };
 
-const verify = (question) => {
-  const arr = parseQuestion(question);
-  const result = count(arr);
+const getAnswer = (question) => {
+  const [num1, operator, num2] = question.split(' ');
+  const result = countExpression(num1, operator, num2);
 
   return String(result);
 };
 
 const play = () => {
-  run(description, getQuestion, verify);
+  run(description, getQuestion, getAnswer);
 };
 
 export default play;
