@@ -3,19 +3,14 @@ import run from '../index.js';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const getEvenNum = (num) => num % 2 === 0;
+const isEvenNum = (num) => num % 2 === 0;
 
-const getQuestion = () => {
-  const min = 0;
-  const max = 100;
+const getQuestion = () => getRandomNum(0, 100);
 
-  return getRandomNum(min, max);
-};
-
-const verify = (question) => (getEvenNum(question) ? 'yes' : 'no');
+const getAnswer = (question) => (isEvenNum(question) ? 'yes' : 'no');
 
 const play = () => {
-  run(description, getQuestion, verify);
+  run(description, getQuestion, getAnswer);
 };
 
 export default play;
