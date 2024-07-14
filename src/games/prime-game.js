@@ -16,17 +16,12 @@ const isPrime = (number) => {
   return true;
 };
 
-const getQuestion = () => {
-  const min = 0;
-  const max = 100;
+const getQuestion = () => getRandomNum(0, 100);
 
-  return getRandomNum(min, max);
-};
-
-const verify = (question) => (isPrime(question) ? 'yes' : 'no');
+const getAnswer = (question) => (isPrime(question) ? 'yes' : 'no');
 
 const play = () => {
-  run(description, getQuestion, verify);
+  run(description, getQuestion, getAnswer);
 };
 
 export default play;
