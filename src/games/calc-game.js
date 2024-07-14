@@ -21,7 +21,7 @@ const makeCalc = (num1, operator, num2) => {
 const countExpression = (num1, operator, num2) => makeCalc(num1, operator, num2);
 
 const getRandomOperator = () => {
-  const random = getRandomNum(0, OPERATORS.length);
+  const random = getRandomNum(0, OPERATORS.length - 1);
 
   return OPERATORS[random];
 };
