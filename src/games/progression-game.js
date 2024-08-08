@@ -4,13 +4,15 @@ import run from '../index.js';
 const DESCRIPTION = 'What number is missing in the progression?';
 
 const createProgression = () => {
-  const progression = [];
   const step = getRandomNum(1, 5);
-  const arrLength = getRandomNum(5, 10);
-  let item = getRandomNum(0, 50);
+  const progressionLength = getRandomNum(5, 10);
+  const firstItem = getRandomNum(0, 50);
+  const progression = [firstItem];
 
-  for (let i = 0, j = 0; i < arrLength; i += 1, j = step) {
-    item += j;
+  for (let i = 1; i < progressionLength; i += 1) {
+    const prevItem = progression[i - 1];
+    const item = prevItem + step;
+
     progression.push(item);
   }
 
@@ -52,6 +54,7 @@ const getAnswer = (question) => {
       }
     }
   }
+
   return String(result);
 };
 
