@@ -5,23 +5,20 @@ const DESCRIPTION = 'What is the result of the expression?';
 
 const OPERATORS = ['+', '-', '*'];
 
-const addition = (num1, num2) => num1 + num2;
+const add = (num1, num2) => num1 + num2;
 
-const subtraction = (num1, num2) => num1 - num2;
+const subtract = (num1, num2) => num1 - num2;
 
-const multiplication = (num1, num2) => num1 * num2;
+const multiply = (num1, num2) => num1 * num2;
 
-const calculate = (num1, operator, num2) => {
-  const number1 = Number(num1);
-  const number2 = Number(num2);
-
+const calculate = (number1, number2, operator) => {
   switch (operator) {
     case '+':
-      return addition(number1, number2);
+      return add(number1, number2);
     case '-':
-      return subtraction(number1, number2);
+      return subtract(number1, number2);
     case '*':
-      return multiplication(number1, number2);
+      return multiply(number1, number2);
     default:
       throw new Error(`Unknown operator: ${operator}`);
   }
@@ -35,15 +32,18 @@ const getRandomOperator = () => {
 
 const getQuestion = () => {
   const operand1 = getRandomNum(0, 100);
-  const operator = getRandomOperator();
   const operand2 = getRandomNum(0, 100);
+  const operator = getRandomOperator();
 
   return `${operand1} ${operator} ${operand2}`;
 };
 
 const getAnswer = (question) => {
   const [num1, operator, num2] = question.split(' ');
-  const result = calculate(num1, operator, num2);
+  const number1 = Number(num1);
+  const number2 = Number(num2);
+
+  const result = calculate(number1, number2, operator);
 
   return String(result);
 };
