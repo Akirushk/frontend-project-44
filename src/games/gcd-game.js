@@ -14,7 +14,7 @@ const parseQuestion = (text) => {
   return result;
 };
 
-const gcdCalc = (num1, num2) => {
+const calculateGcd = (num1, num2) => {
   let remainder;
   let dividend = num1;
   let divisor = num2;
@@ -24,6 +24,7 @@ const gcdCalc = (num1, num2) => {
     dividend = divisor;
     divisor = remainder;
   }
+
   return dividend;
 };
 
@@ -36,7 +37,7 @@ const getQuestion = () => {
 
 const getAnswer = (question) => {
   const [num1, num2] = parseQuestion(question);
-  const result = gcdCalc(num1, num2);
+  const result = calculateGcd(num1, num2);
 
   return String(result);
 };
