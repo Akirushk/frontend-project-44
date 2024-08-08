@@ -1,7 +1,7 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
-const description = 'Find the greatest common divisor of given numbers.';
+const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 const parseQuestion = (text) => {
   const arr = text.split(' ');
@@ -14,7 +14,7 @@ const parseQuestion = (text) => {
   return result;
 };
 
-const countExpression = (num1, num2) => {
+const gcdCalc = (num1, num2) => {
   let remainder;
   let dividend = num1;
   let divisor = num2;
@@ -36,13 +36,13 @@ const getQuestion = () => {
 
 const getAnswer = (question) => {
   const [num1, num2] = parseQuestion(question);
-  const result = countExpression(num1, num2);
+  const result = gcdCalc(num1, num2);
 
   return String(result);
 };
 
 const play = () => {
-  run(description, getQuestion, getAnswer);
+  run(DESCRIPTION, getQuestion, getAnswer);
 };
 
 export default play;
