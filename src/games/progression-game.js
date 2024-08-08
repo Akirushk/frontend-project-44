@@ -1,20 +1,20 @@
 import getRandomNum from '../get-random-num.js';
 import run from '../index.js';
 
-const description = 'What number is missing in the progression?';
+const DESCRIPTION = 'What number is missing in the progression?';
 
 const createProgression = () => {
-  const arr = [];
+  const progression = [];
   const step = getRandomNum(1, 5);
   const arrLength = getRandomNum(5, 10);
-  let result = getRandomNum(0, 50);
+  let item = getRandomNum(0, 50);
 
   for (let i = 0, j = 0; i < arrLength; i += 1, j = step) {
-    result += j;
-    arr.push(result);
+    item += j;
+    progression.push(item);
   }
 
-  return arr;
+  return progression;
 };
 
 const getStep = (arr) => {
@@ -30,24 +30,25 @@ const getStep = (arr) => {
 };
 
 const getQuestion = () => {
-  const arr = createProgression();
-  const hiddenIndex = getRandomNum(0, arr.length);
+  const progression = createProgression();
+  const hiddenIndex = getRandomNum(0, progression.length);
 
-  arr[hiddenIndex] = '..';
+  progression[hiddenIndex] = '..';
 
-  return arr.join(' ');
+  return progression.join(' ');
 };
 
 const getAnswer = (question) => {
   const progression = question.split(' ');
+  const step = getStep(progression);
   let result;
 
-  for (let j = 0; j < progression.length; j += 1) {
-    if (progression[j] === '..') {
-      if (j === 0) {
-        result = Number(progression[j + 1]) - getStep(progression);
+  for (let i = 0; i < progression.length; i += 1) {
+    if (progression[i] === '..') {
+      if (i === 0) {
+        result = Number(progression[i + 1]) - step;
       } else {
-        result = Number(progression[j - 1]) + getStep(progression);
+        result = Number(progression[i - 1]) + step;
       }
     }
   }
@@ -55,7 +56,7 @@ const getAnswer = (question) => {
 };
 
 const play = () => {
-  run(description, getQuestion, getAnswer);
+  run(DESCRIPTION, getQuestion, getAnswer);
 };
 
 export default play;
